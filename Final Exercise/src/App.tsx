@@ -1,30 +1,26 @@
 import React from 'react'
-import NavigationBar from './components/navigationBar'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import NavigationBar from './components/NavigationBar'
+import HomePage from './components/HomePage'
+import AboutPage from './components/AboutPage'
+import './App.css'
 
-function App() {
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <NavigationBar />, 
+    children: [
+      { index: true, element: <HomePage /> },
+      { path: "about", element: <AboutPage /> }
+    ]
+  }
+])
 
-
+export default function App() {
   return (
     <>
-      <div>
-        <h1 style={
-          {top: '0',
-          position: 'absolute',
-          width: '100%',
-          textAlign: 'center',
-          backgroundColor: 'lightblue',
-          color: 'black',
-          height: '100px',
-          lineHeight: '100px',
-          alignContent: 'center',
-          marginTop: '0',
-        }
-        }>Welcome to the website</h1>
-
-        <NavigationBar />
-      </div>
+      <h1 className='theme'>Welcome to My Homepage</h1>
+      <RouterProvider router={router} />
     </>
   )
 }
-
-export default App

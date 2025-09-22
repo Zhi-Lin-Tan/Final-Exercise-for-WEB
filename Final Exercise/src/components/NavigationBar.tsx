@@ -1,27 +1,18 @@
 import React from 'react'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import AboutPage from './AboutPage'
-import HomePage from './HomePage'
-import Navigation from './Navigation'
+import { Outlet, NavLink } from 'react-router-dom'
+import '../App.css'
 
 export default function NavigationBar() {
-
-    const router = createBrowserRouter([
-        {
-            path: "/",
-            element: <HomePage />
-        },
-        {
-            path: "/about",
-            element: <AboutPage />
-        }
-    ])
-
   return (
-    <div>
-        <Navigation />
-        <RouterProvider router={router} />
-    </div>
+    <div className='mainBar'>
+        <nav className='HomeAndAbout'>
+            <NavLink  to="/">Home Page</NavLink>
+            <NavLink to="/about">About Page</NavLink>
+        </nav>
 
+            <Outlet /> 
+        
+    </div>
   )
 }
+
