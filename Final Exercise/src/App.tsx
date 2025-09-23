@@ -5,6 +5,7 @@ import HomePage from './components/HomePage'
 import AboutPage from './components/AboutPage'
 import './App.css'
 import DetailOfSession from './components/session/DetailOfSession'
+import JoinSession from './components/session/joinSession'
 
 const router = createBrowserRouter([
   {
@@ -13,7 +14,8 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       { path: "about", element: <AboutPage /> },
-      { path: "session/:id", element: <DetailOfSession /> }
+      { path: "session/:id", element: <DetailOfSession /> },
+      { path: "session/:id/join", element: <JoinSession /> }
     ]
   }
 ])

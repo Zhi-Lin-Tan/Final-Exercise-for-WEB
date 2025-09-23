@@ -41,3 +41,41 @@
   transform: scale(1.1);    
   box-shadow: 0 8px 16px rgba(0,0,0,0.3); 
 }
+
+/* JoinSession.css */
+.joinSession {
+  max-width: 40%;
+  margin: 20px auto;
+  padding: 20px;
+  border: 2px solid #000000;
+  border-radius: 10px;
+  background-color: #66ae75;
+}
+
+.joinSession h1 {
+  text-align: left;
+  color: #222;
+}
+
+.joinSession input {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin: 8px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.joinSession button {
+  padding: 8px 16px;
+  margin: 10px 5px 0 0;
+  border-radius: 10px;
+  border: none;
+  background-color: #8cb3dd;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+.joinSession button:hover {
+  background-color: #021f3d;
+}

@@ -1,7 +1,8 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function DetailOfSession() {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const DetailOfSession: Record<string, any> = {
     football: {
@@ -50,7 +51,7 @@ export default function DetailOfSession() {
         <strong>Type:</strong> {session.type}
       </p>
 
-      <button>Im Going</button>
+      <button onClick={() => navigate(`/session/${session.id}/join`)}>I wanna join</button>
     </div>
   );
 }
