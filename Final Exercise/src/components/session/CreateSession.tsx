@@ -21,6 +21,21 @@ export default function CreateSession() {
     });
   }
 
+    function saveSession() {
+    const newSession = {
+      ...sessionData,
+      id: Date.now().toString(), 
+    };
+
+    const existingSessions = JSON.parse(localStorage.getItem("sessions") || "[]");
+
+    existingSessions.push(newSession);
+
+    localStorage.setItem("sessions", JSON.stringify(existingSessions));
+
+    setSaveButtonClicked(true);
+  }
+
   let output;
   if (saveButtonClicked === false) {
     output = (
@@ -84,7 +99,7 @@ export default function CreateSession() {
         </div>
 
         <div>
-          <button onClick={() => setSaveButtonClicked(true)}>Create Session</button>
+          <button onClick={saveSession}>Create Session</button>
         </div>
       </div>
     );

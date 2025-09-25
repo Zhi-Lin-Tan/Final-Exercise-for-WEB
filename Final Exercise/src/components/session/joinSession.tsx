@@ -1,8 +1,11 @@
 import React from 'react'
 import { useState } from 'react'
+import { useParams } from 'react-router-dom';
 import '../../App.css'
 
 export default function JoinSession() {
+
+    const { id } = useParams();
 
     const [userData, setUserData] = useState({
         firstName: '',
@@ -11,35 +14,27 @@ export default function JoinSession() {
     });
     const [saveButtonClicked, setSaveButtonClicked] = useState(false);
 
-    function handleFirstNameChange(event) {   
+    
 
-        setUserData({
-            ...userData,
-            firstName: event.target.value
-        });
-    }
-
-    function handleLastNameChange(event) {   
-        setUserData({
-            ...userData,
-            lastName: event.target.value
-        });
-    }
-
-    function handleEmailChange(event) {   
-        setUserData({
-            ...userData,
-            email: event.target.value
-        });
-    }
-
-    // altenative - on handling function to deal with all changes
     function handleUserDataChange(event, fieldName) {
-
         setUserData({
-            ...userData,
-            [fieldName]: event.target.value
+        ...userData,
+        [fieldName]: event.target.value
         });
+    }
+
+    function handleSave() {
+        const sessions = JSON.parse(localStorage.getItem("sessions") || "[]");
+        const sessionIndex = Number(id);
+
+        if (sessions[sessionIndex]) {
+            if (!sessions[sessionIndex].attendees) sessions[sessionIndex].attendees = [];
+            sessions[sessionIndex].attendees.push(userData);
+            localStorage.setItem("sessions", JSON.stringify(sessions));
+            setSaveButtonClicked(true);
+        } else {
+            alert("Session not found!");
+        }
     }
 
     let output;
@@ -61,7 +56,9 @@ export default function JoinSession() {
                         onChange={ (event) => handleUserDataChange(event, 'email')} 
                     />
                 </div>
-                <div><button onClick={ () => setSaveButtonClicked(true)}>Save</button></div>
+                    <div>
+                        <button onClick={handleSave}>Save</button>
+                    </div>
             </div>;
     } else {
         output = <div>
