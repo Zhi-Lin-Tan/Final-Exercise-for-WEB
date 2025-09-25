@@ -19,6 +19,15 @@ export default function HomePage() {
           onClick={() => navigate("/session/sing")} />
       </div>
 
+            <div style={{ marginTop: "40px", textAlign: "center" }}>
+        <button 
+          className="createSessionBtn" 
+          onClick={() => navigate('/session/CreateSession')}
+        >
+        Create a New Session
+        </button>
+      </div>
+
 
       
     </div>

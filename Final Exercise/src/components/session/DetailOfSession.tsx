@@ -11,7 +11,6 @@ export default function DetailOfSession() {
       date: "2025-09-30",
       time: "19:30",
       maxParticipants: 20,
-      type: "public",
     },
     boardgame: {
       title: "Board Game Night",
@@ -19,7 +18,6 @@ export default function DetailOfSession() {
       date: "2025-10-16",
       time: "19:30",
       maxParticipants: 15,
-      type: "private",
     },
     sing: {
       title: "Choir Rehearsal",
@@ -27,11 +25,19 @@ export default function DetailOfSession() {
       date: "2025-10-05",
       time: "19:30",
       maxParticipants: 15,
-      type: "public",
     },
   };
 
   const session = id ? DetailOfSession[id] : null;
+
+    if (!session) {
+    return (
+      <div>
+        <h2>⚠️ Session not found</h2>
+        <button onClick={() => navigate("/")}>Back to Home</button>
+      </div>
+    );
+  }
 
   
   return (
